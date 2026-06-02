@@ -99,11 +99,17 @@ Optimization problems often require maintaining the correct state while traversi
 
 ## Day Summary
 
-Today's problems reinforced the importance of identifying patterns that enable linear-time solutions.
+### Reflection
 
-Although the brute-force approaches were straightforward, the optimal solutions relied on maintaining useful information while traversing the array only once.
+Today's problems looked completely different on the surface, but all three shared a common theme: maintaining the right state while traversing the array.
 
-The most valuable takeaway was learning how a small amount of state information can dramatically reduce time complexity.
+In Kadane's Algorithm, the running sum helped identify the best subarray.
+
+In Sort Colors, three pointers maintained the correct partition of the array.
+
+In Best Time to Buy and Sell Stock, tracking the minimum price so far allowed the maximum profit to be calculated in a single pass.
+
+The biggest lesson today was that many optimal solutions emerge when we maintain only the information that matters instead of recomputing everything repeatedly.
 
 ---
 

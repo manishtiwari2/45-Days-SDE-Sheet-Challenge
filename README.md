@@ -17,45 +17,20 @@ I have started a 45-Day SDE Sheet Challenge to strengthen my Data Structures and
 * Maintain consistency
 * Document learnings publicly
 
----
-
-## Progress Tracker
-
-| Day    | Problems Solved | Status  |
-| ------ | --------------- | ------  |
-| Day 01 | 3               | ✅      |
-| Day 02 | 0               | ✅      |
-| Day 03 | 0               | ⬜      |
-| Day 04 | 0               | ⬜      |
-| Day 05 | 0               | ⬜      |
-
----
 
 ## Statistics
 
-* Days Completed: 1/45
-* Total Problems Solved: 3
+* Days Completed: 2/45
+* Total Problems Solved: 6
 
 ### Difficulty Breakdown
 
-* Easy: 1
-* Medium: 2
+* Easy: 2
+* Medium: 4
 * Hard: 0
 
 ---
 
-## Daily Logs
-
-* [Day 01](./Day-01)
-
----
-
-## Topics Covered
-
-* Arrays
-* Matrix Manipulation
-* Mathematical Patterns
-* Permutations
 
 ---
 

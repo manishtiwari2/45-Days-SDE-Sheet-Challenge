@@ -1,10 +1,78 @@
-# Day 24
+# Day 23
 
-📅 Date: 24 June 2026
+📅 Date: 23 June 2026
 
 ## Problems Solved
 
-### 1. Valid Parentheses
+### 1. Implement Stack Using Array
+
+**Platform:** Coding Problem
+
+**Difficulty:** Easy
+
+### Approach
+
+Implemented a Stack from scratch using an array.
+
+Supported operations:
+
+- Push
+- Pop
+- Peek
+- isEmpty
+- isFull
+
+Maintained a `top` pointer to track the current top element.
+
+### Complexity
+
+- Push: O(1)
+- Pop: O(1)
+- Peek: O(1)
+- Space Complexity: O(N)
+
+### Key Learning
+
+Learned how stack operations are implemented internally using arrays and pointer manipulation.
+
+---
+
+### 2. Implement Queue Using Array
+
+**Platform:** Coding Problem
+
+**Difficulty:** Easy
+
+### Approach
+
+Implemented a Queue using an array.
+
+Supported operations:
+
+- Enqueue
+- Dequeue
+- Front
+- Rear
+- isEmpty
+- isFull
+
+For deletion, elements were shifted to maintain queue order.
+
+### Complexity
+
+- Enqueue: O(1)
+- Dequeue: O(N)
+- Front: O(1)
+- Rear: O(1)
+- Space Complexity: O(N)
+
+### Key Learning
+
+Understood the limitations of a simple array-based queue and why circular queues are preferred in practice.
+
+---
+
+### 3. Implement Stack Using Queue
 
 **Platform:** LeetCode
 
@@ -12,72 +80,49 @@
 
 ### Approach
 
-Used a Stack to keep track of opening brackets.
+Used a single Queue.
 
-- Push every opening bracket.
-- For every closing bracket, verify it matches the top of the stack.
-- If it doesn't match or the stack is empty, the string is invalid.
-- At the end, the stack must be empty.
+- Push new element.
+- Rotate previous elements behind it.
+- Front of the queue always represents the top of the stack.
 
 ### Complexity
 
-- Time Complexity: O(N)
+- Push: O(N)
+- Pop: O(1)
+- Top: O(1)
 - Space Complexity: O(N)
 
 ### Key Learning
 
-Stack is the ideal data structure for problems involving matching symbols and nested structures.
+Simulated LIFO behavior using FIFO operations through queue rotation.
 
 ---
 
-### 2. Next Greater Element
+### 4. Implement Queue Using Stacks
 
-**Platform:** GeeksforGeeks
+**Platform:** LeetCode
 
-**Difficulty:** Medium
+**Difficulty:** Easy
 
 ### Approach
 
-Used a Monotonic Decreasing Stack.
+Used two stacks.
 
-- Traverse the array from right to left.
-- Remove all elements smaller than or equal to the current element.
-- The remaining top of the stack is the Next Greater Element.
-- Push the current element into the stack.
+- First stack handles insertion.
+- Second stack handles deletion.
+- Transfer elements only when the second stack becomes empty.
 
 ### Complexity
 
-- Time Complexity: O(N)
+- Push: O(1)
+- Pop: Amortized O(1)
+- Peek: Amortized O(1)
 - Space Complexity: O(N)
 
 ### Key Learning
 
-Monotonic stacks efficiently solve nearest greater/smaller element problems by ensuring each element is pushed and popped at most once.
-
----
-
-### 3. Sort a Stack
-
-**Platform:** GeeksforGeeks
-
-**Difficulty:** Medium
-
-### Approach
-
-Solved recursively without using any extra data structure.
-
-- Remove the top element recursively.
-- Sort the remaining stack.
-- Insert the removed element back into its correct sorted position.
-
-### Complexity
-
-- Time Complexity: O(N²)
-- Space Complexity: O(N)
-
-### Key Learning
-
-Recursion can simulate an auxiliary stack by leveraging the function call stack, making it useful for recursive sorting and backtracking problems.
+Learned the lazy transfer technique that enables efficient queue implementation using stacks.
 
 ---
 
@@ -85,34 +130,39 @@ Recursion can simulate an auxiliary stack by leveraging the function call stack,
 
 ✔ Stack
 
-✔ Monotonic Stack
+✔ Queue
 
-✔ Balanced Parentheses
+✔ Array Implementation
 
-✔ Next Greater Element
+✔ Queue Rotation
 
-✔ Recursion
+✔ Two Stack Technique
 
-✔ Recursive Stack Manipulation
+✔ LIFO
 
-✔ Function Call Stack
+✔ FIFO
+
+✔ Amortized Analysis
 
 ---
 
 ## Day Summary
 
-Today's session focused entirely on Stack-based problem solving.
+Today's focus was on understanding the internal implementation of fundamental data structures instead of relying on built-in libraries.
 
-Started with validating balanced parentheses, moved to solving the Next Greater Element problem using a Monotonic Stack, and finally implemented recursive stack sorting without using any additional data structures.
+Implemented both Stack and Queue from scratch using arrays and explored how one data structure can be simulated using another:
 
-These problems reinforced both iterative and recursive applications of stacks commonly asked in coding interviews.
+- Stack using Queue
+- Queue using Stacks
+
+These problems strengthened my understanding of data structure design, operation complexities, and interview implementation patterns.
 
 ---
 
 ## Statistics
 
-Problems Solved Today: 3
+Problems Solved Today: 4
 
-Total Problems Solved So Far: 78
+Total Problems Solved So Far: 75
 
-Days Completed: 24/45
+Days Completed: 23/45

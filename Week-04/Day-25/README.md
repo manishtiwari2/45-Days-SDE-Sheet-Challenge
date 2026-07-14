@@ -1,87 +1,23 @@
-# Day 25
+# Day 24
 
-📅 Date: 25 June 2026
+📅 Date: 24 June 2026
 
 ## Problems Solved
 
-### 1. LRU Cache
+### 1. Valid Parentheses
 
 **Platform:** LeetCode
-
-**Difficulty:** Medium
-
-### Approach
-
-Implemented an LRU (Least Recently Used) Cache using:
-
-- HashMap for O(1) key lookup.
-- Doubly Linked List for O(1) insertion and deletion.
-
-Whenever a key is accessed, it is moved to the front of the list. If the cache reaches its capacity, the least recently used element (tail) is removed.
-
-### Complexity
-
-- Get: O(1)
-- Put: O(1)
-- Space Complexity: O(Capacity)
-
-### Key Learning
-
-Combining a HashMap with a Doubly Linked List enables constant-time cache operations.
-
----
-
-### 2. LFU Cache
-
-**Platform:** LeetCode
-
-**Difficulty:** Hard
-
-### Approach
-
-Implemented an LFU (Least Frequently Used) Cache using:
-
-- HashMap to store key → node mapping.
-- Frequency Map to group nodes by access frequency.
-- Doubly Linked Lists for maintaining LRU order within the same frequency.
-
-Whenever a node is accessed:
-
-- Remove it from its current frequency list.
-- Increase its frequency.
-- Insert it into the next frequency list.
-
-When capacity is full:
-
-- Remove the Least Frequently Used node.
-- If multiple nodes share the same frequency, remove the Least Recently Used among them.
-
-### Complexity
-
-- Get: O(1)
-- Put: O(1)
-- Space Complexity: O(Capacity)
-
-### Key Learning
-
-LFU Cache combines multiple data structures to efficiently maintain both frequency and recency information.
-
----
-
-### 3. Next Smaller Element
-
-**Platform:** GeeksforGeeks
 
 **Difficulty:** Easy
 
 ### Approach
 
-Solved using a Monotonic Increasing Stack.
+Used a Stack to keep track of opening brackets.
 
-- Traverse the array from right to left.
-- Remove all elements greater than or equal to the current element.
-- The top of the stack becomes the next smaller element.
-- Push the current element onto the stack.
+- Push every opening bracket.
+- For every closing bracket, verify it matches the top of the stack.
+- If it doesn't match or the stack is empty, the string is invalid.
+- At the end, the stack must be empty.
 
 ### Complexity
 
@@ -90,37 +26,86 @@ Solved using a Monotonic Increasing Stack.
 
 ### Key Learning
 
-Monotonic stacks efficiently solve nearest smaller and greater element problems in linear time.
+Stack is the ideal data structure for problems involving matching symbols and nested structures.
+
+---
+
+### 2. Next Greater Element
+
+**Platform:** GeeksforGeeks
+
+**Difficulty:** Medium
+
+### Approach
+
+Used a Monotonic Decreasing Stack.
+
+- Traverse the array from right to left.
+- Remove all elements smaller than or equal to the current element.
+- The remaining top of the stack is the Next Greater Element.
+- Push the current element into the stack.
+
+### Complexity
+
+- Time Complexity: O(N)
+- Space Complexity: O(N)
+
+### Key Learning
+
+Monotonic stacks efficiently solve nearest greater/smaller element problems by ensuring each element is pushed and popped at most once.
+
+---
+
+### 3. Sort a Stack
+
+**Platform:** GeeksforGeeks
+
+**Difficulty:** Medium
+
+### Approach
+
+Solved recursively without using any extra data structure.
+
+- Remove the top element recursively.
+- Sort the remaining stack.
+- Insert the removed element back into its correct sorted position.
+
+### Complexity
+
+- Time Complexity: O(N²)
+- Space Complexity: O(N)
+
+### Key Learning
+
+Recursion can simulate an auxiliary stack by leveraging the function call stack, making it useful for recursive sorting and backtracking problems.
 
 ---
 
 ## Concepts Practiced
 
-✔ LRU Cache
-
-✔ LFU Cache
-
-✔ Doubly Linked List
-
-✔ HashMap
-
-✔ Frequency Map
+✔ Stack
 
 ✔ Monotonic Stack
 
-✔ Next Smaller Element
+✔ Balanced Parentheses
 
-✔ O(1) Cache Design
+✔ Next Greater Element
+
+✔ Recursion
+
+✔ Recursive Stack Manipulation
+
+✔ Function Call Stack
 
 ---
 
 ## Day Summary
 
-Today's session focused on advanced data structure design and stack applications.
+Today's session focused entirely on Stack-based problem solving.
 
-Implemented two widely asked system design interview problems—LRU Cache and LFU Cache—using combinations of HashMaps and Doubly Linked Lists to achieve O(1) operations.
+Started with validating balanced parentheses, moved to solving the Next Greater Element problem using a Monotonic Stack, and finally implemented recursive stack sorting without using any additional data structures.
 
-Also solved the Next Smaller Element problem using a Monotonic Stack, reinforcing efficient nearest-element techniques.
+These problems reinforced both iterative and recursive applications of stacks commonly asked in coding interviews.
 
 ---
 
@@ -128,6 +113,6 @@ Also solved the Next Smaller Element problem using a Monotonic Stack, reinforcin
 
 Problems Solved Today: 3
 
-Total Problems Solved So Far: 81
+Total Problems Solved So Far: 78
 
-Days Completed: 25/45
+Days Completed: 24/45

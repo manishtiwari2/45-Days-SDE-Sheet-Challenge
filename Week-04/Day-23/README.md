@@ -1,168 +1,129 @@
-# Day 23
+# Day 26
 
-📅 Date: 23 June 2026
+📅 Date: 26 June 2026
 
 ## Problems Solved
 
-### 1. Implement Stack Using Array
+### 1. Merge K Sorted Arrays
 
-**Platform:** Coding Problem
+**Platform:** GeeksforGeeks
 
-**Difficulty:** Easy
-
-### Approach
-
-Implemented a Stack from scratch using an array.
-
-Supported operations:
-
-- Push
-- Pop
-- Peek
-- isEmpty
-- isFull
-
-Maintained a `top` pointer to track the current top element.
-
-### Complexity
-
-- Push: O(1)
-- Pop: O(1)
-- Peek: O(1)
-- Space Complexity: O(N)
-
-### Key Learning
-
-Learned how stack operations are implemented internally using arrays and pointer manipulation.
-
----
-
-### 2. Implement Queue Using Array
-
-**Platform:** Coding Problem
-
-**Difficulty:** Easy
+**Difficulty:** Medium
 
 ### Approach
 
-Implemented a Queue using an array.
+Merged K sorted arrays efficiently using a Min Heap.
 
-Supported operations:
-
-- Enqueue
-- Dequeue
-- Front
-- Rear
-- isEmpty
-- isFull
-
-For deletion, elements were shifted to maintain queue order.
+- Inserted the first element of every array into the Min Heap.
+- Extracted the smallest element and added it to the result.
+- Inserted the next element from the same array into the heap.
+- Continued until the heap became empty.
 
 ### Complexity
 
-- Enqueue: O(1)
-- Dequeue: O(N)
-- Front: O(1)
-- Rear: O(1)
-- Space Complexity: O(N)
+- Time Complexity: O(N × M × log K)
+- Space Complexity: O(K)
 
 ### Key Learning
 
-Understood the limitations of a simple array-based queue and why circular queues are preferred in practice.
+The Min Heap efficiently keeps track of the smallest available element across multiple sorted arrays.
 
 ---
 
-### 3. Implement Stack Using Queue
+### 2. Find Median from Data Stream
 
 **Platform:** LeetCode
 
-**Difficulty:** Easy
+**Difficulty:** Hard
 
 ### Approach
 
-Used a single Queue.
+Maintained two heaps:
 
-- Push new element.
-- Rotate previous elements behind it.
-- Front of the queue always represents the top of the stack.
+- Max Heap stores the smaller half of elements.
+- Min Heap stores the larger half.
+
+Balanced both heaps after every insertion.
+
+- If total elements are odd, the median is the top of the Max Heap.
+- Otherwise, the median is the average of the two heap tops.
 
 ### Complexity
 
-- Push: O(N)
-- Pop: O(1)
-- Top: O(1)
+- Add Number: O(log N)
+- Find Median: O(1)
 - Space Complexity: O(N)
 
 ### Key Learning
 
-Simulated LIFO behavior using FIFO operations through queue rotation.
+Using two heaps allows efficient online median computation while maintaining balanced partitions.
 
 ---
 
-### 4. Implement Queue Using Stacks
+### 3. Top K Frequent Elements
 
-**Platform:** LeetCode
+**Platform:** GeeksforGeeks
 
-**Difficulty:** Easy
+**Difficulty:** Medium
 
 ### Approach
 
-Used two stacks.
-
-- First stack handles insertion.
-- Second stack handles deletion.
-- Transfer elements only when the second stack becomes empty.
+- Counted frequencies using a HashMap.
+- Maintained a Min Heap of size K storing (element, frequency).
+- Removed the least important element whenever the heap exceeded size K.
+- Extracted the remaining elements to obtain the top K frequent values.
 
 ### Complexity
 
-- Push: O(1)
-- Pop: Amortized O(1)
-- Peek: Amortized O(1)
+- Time Complexity: O(N log K)
 - Space Complexity: O(N)
 
 ### Key Learning
 
-Learned the lazy transfer technique that enables efficient queue implementation using stacks.
+Combining HashMaps with Priority Queues provides an efficient solution for Top-K frequency problems.
 
 ---
 
 ## Concepts Practiced
 
-✔ Stack
+✔ Min Heap
 
-✔ Queue
+✔ Max Heap
 
-✔ Array Implementation
+✔ Priority Queue
 
-✔ Queue Rotation
+✔ Merge K Sorted Arrays
 
-✔ Two Stack Technique
+✔ Median from Data Stream
 
-✔ LIFO
+✔ Top K Elements
 
-✔ FIFO
+✔ Frequency Counting
 
-✔ Amortized Analysis
+✔ HashMap
+
+✔ Heap Optimization
 
 ---
 
 ## Day Summary
 
-Today's focus was on understanding the internal implementation of fundamental data structures instead of relying on built-in libraries.
+Today's focus was on advanced Heap applications.
 
-Implemented both Stack and Queue from scratch using arrays and explored how one data structure can be simulated using another:
+Solved three classic interview problems involving Priority Queues:
 
-- Stack using Queue
-- Queue using Stacks
+- Efficiently merging multiple sorted arrays.
+- Maintaining the median of a continuously growing data stream.
+- Finding the Top K frequent elements using a Min Heap.
 
-These problems strengthened my understanding of data structure design, operation complexities, and interview implementation patterns.
+These problems strengthened my understanding of heap-based optimization techniques commonly used in coding interviews.
 
 ---
 
 ## Statistics
 
-Problems Solved Today: 4
+Problems Solved Today: 3
 
-Total Problems Solved So Far: 75
+Total Problems Solved So Far: 84
 
-Days Completed: 23/45
+Days Completed: 26/45

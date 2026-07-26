@@ -1,4 +1,4 @@
-# Day 44
+# Day 43
 
 📅 Date: 14 July 2026
 
@@ -139,4 +139,4 @@ These problems strengthened my understanding of BST traversal, iterator design, 
 
 - Problems Solved Today: 4
 - Total Problems Solved So Far: 144
-- Days Completed: 44/45
+- Days Completed: 43/45

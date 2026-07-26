@@ -1,23 +1,24 @@
-# Day 39
+# Day 40
 
-📅 Date: 09 July 2026
+📅 Date: 10 July 2026
 
 ## Problems Solved
 
-### 1. Binary Tree Maximum Path Sum
+### 1. Symmetric Tree
 
 **Platform:** LeetCode
 
-**Difficulty:** Hard
+**Difficulty:** Easy
 
 ### Approach
 
-Used postorder DFS to compute the maximum gain from each subtree.
+Used recursive mirror checking.
 
-- Ignored negative subtree contributions by taking `max(0, gain)`.
-- Calculated the path passing through the current node.
-- Updated the global maximum path sum.
-- Returned the maximum gain that could be extended to the parent.
+- Compared the left and right subtrees simultaneously.
+- Verified that both nodes existed and had the same value.
+- Recursively compared:
+  - Left subtree of the left node with the right subtree of the right node.
+  - Right subtree of the left node with the left subtree of the right node.
 
 ### Complexity
 
@@ -26,11 +27,11 @@ Used postorder DFS to compute the maximum gain from each subtree.
 
 ### Key Learning
 
-For path sum problems, each recursive call should return the maximum contribution to its parent while separately maintaining the best complete path.
+Mirror symmetry can be verified efficiently by recursively comparing opposite child nodes.
 
 ---
 
-### 2. Construct Binary Tree from Preorder and Inorder Traversal
+### 2. Flatten Binary Tree to Linked List
 
 **Platform:** LeetCode
 
@@ -38,79 +39,79 @@ For path sum problems, each recursive call should return the maximum contributio
 
 ### Approach
 
-Reconstructed the tree recursively.
+Flattened the tree in-place using an iterative Morris-style traversal.
 
-- Used preorder traversal to identify the root.
-- Stored inorder indices in a HashMap for constant-time lookup.
-- Divided the inorder array into left and right subtrees.
-- Built both subtrees recursively.
+- Traversed the tree using a pointer.
+- For every node with a left child:
+  - Located the rightmost node of the left subtree.
+  - Connected it to the original right subtree.
+  - Moved the left subtree to the right.
+  - Set the left child to `null`.
+- Continued along the right pointers.
 
 ### Complexity
 
 - Time Complexity: O(N)
-- Space Complexity: O(N)
+- Space Complexity: O(1)
 
 ### Key Learning
 
-Combining preorder traversal with inorder indexing enables reconstruction of the original binary tree in linear time.
+Tree restructuring can be performed in-place by rewiring pointers without using recursion or an auxiliary stack.
 
 ---
 
-### 3. Construct Binary Tree from Inorder and Postorder Traversal
+### 3. Children Sum Property
 
-**Platform:** LeetCode
+**Platform:** GeeksforGeeks
 
-**Difficulty:** Medium
+**Difficulty:** Easy
 
 ### Approach
 
-Built the tree recursively starting from the end of the postorder array.
+Validated the Children Sum Property using recursion.
 
-- Selected the current root from postorder.
-- Located the root in the inorder traversal.
-- Constructed the right subtree before the left subtree.
-- Repeated recursively until the tree was reconstructed.
+- Treated null nodes and leaf nodes as valid.
+- Calculated the sum of existing children.
+- Compared the current node's value with the children's sum.
+- Recursively verified the left and right subtrees.
 
 ### Complexity
 
-- Time Complexity: O(N²) *(Current implementation due to linear inorder search)*
+- Time Complexity: O(N)
 - Space Complexity: O(H)
 
 ### Key Learning
 
-When reconstructing from inorder and postorder traversals, the right subtree must be built before the left because postorder is processed from the end.
-
-> **Note:** This implementation can be optimized to **O(N)** by storing inorder indices in a HashMap.
+Recursive validation is well-suited for checking structural properties across every node in a binary tree.
 
 ---
 
 ## Concepts Practiced
 
 - Binary Trees
-- DFS
-- Postorder Traversal
-- Tree Reconstruction
-- Divide and Conquer
-- HashMap
-- Recursive Tree Construction
-- Maximum Path Sum
+- Recursion
+- Mirror Trees
+- Tree Transformation
+- In-place Pointer Manipulation
+- Morris-style Traversal
+- Children Sum Property
 
 ---
 
 ## Day Summary
 
-Today's problems focused on advanced binary tree recursion and reconstruction techniques.
+Today's problems focused on recursive validation and in-place binary tree transformations.
 
-- Computed the maximum path sum using postorder DFS and subtree gains.
-- Reconstructed binary trees from preorder-inorder and inorder-postorder traversals.
-- Practiced divide-and-conquer strategies for recursive tree construction.
+- Verified tree symmetry using mirror recursion.
+- Flattened a binary tree into a linked list using pointer manipulation.
+- Checked the Children Sum Property recursively across the tree.
 
-These problems strengthened my understanding of recursive tree algorithms, traversal relationships, and efficient tree reconstruction techniques.
+These problems strengthened my understanding of recursive tree algorithms and efficient in-place tree modifications.
 
 ---
 
 ## Statistics
 
 - Problems Solved Today: 3
-- Total Problems Solved So Far: 126
-- Days Completed: 39/45
+- Total Problems Solved So Far: 129
+- Days Completed: 40/45

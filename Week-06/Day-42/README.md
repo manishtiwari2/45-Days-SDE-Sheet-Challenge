@@ -1,101 +1,51 @@
-# Day 42
+# Day 43
 
-📅 Date: 12 July 2026
+📅 Date: 13 July 2026
 
 ## Problems Solved
 
-### 1. Construct Binary Search Tree from Preorder Traversal
+### 1. Floor in BST
 
-**Platform:** LeetCode
+**Platform:** GeeksforGeeks
 
-**Difficulty:** Medium
-
-### Approach
-
-Constructed the BST recursively using an upper bound.
-
-- Traversed the preorder array once.
-- Maintained a global index.
-- Created nodes while the current value remained within the allowed bound.
-- Recursively built the left subtree with the current node's value as the new bound.
-- Built the right subtree using the inherited bound.
-
-### Complexity
-
-- Time Complexity: O(N)
-- Space Complexity: O(H)
-
-### Key Learning
-
-Using value bounds eliminates the need to search for subtree boundaries, allowing linear-time BST construction.
-
----
-
-### 2. Validate Binary Search Tree
-
-**Platform:** LeetCode
-
-**Difficulty:** Medium
+**Difficulty:** Easy
 
 ### Approach
 
-Validated the BST using recursion with value ranges.
+Used the Binary Search Tree property recursively.
 
-- Maintained lower and upper bounds for every node.
-- Ensured each node's value lay strictly within its valid range.
-- Updated bounds recursively for left and right subtrees.
-
-### Complexity
-
-- Time Complexity: O(N)
-- Space Complexity: O(H)
-
-### Key Learning
-
-Every node must satisfy constraints imposed by all its ancestors, not just its immediate parent.
-
----
-
-### 3. Lowest Common Ancestor of a Binary Search Tree
-
-**Platform:** LeetCode
-
-**Difficulty:** Medium
-
-### Approach
-
-Leveraged the BST property.
-
-- Traversed left if both target nodes were smaller.
-- Traversed right if both target nodes were larger.
-- Returned the current node when the targets diverged.
+- If the current node's value equals the key, it is the floor.
+- If the current value is greater than the key, searched the left subtree.
+- Otherwise, searched the right subtree for a better candidate.
+- Returned the current node if no larger floor existed in the right subtree.
 
 ### Complexity
 
 - Time Complexity: O(H)
 - Space Complexity: O(H)
 
+Where:
+- H = Height of the BST
+
 ### Key Learning
 
-BST ordering enables efficient Lowest Common Ancestor computation without exploring both subtrees.
+The floor is the greatest value less than or equal to the target, making BST traversal highly efficient.
 
 ---
 
-### 4. Predecessor and Successor
+### 2. Ceil in BST
 
 **Platform:** GeeksforGeeks
 
-**Difficulty:** Medium
+**Difficulty:** Easy
 
 ### Approach
 
-Traversed the BST iteratively.
+Used an iterative BST traversal.
 
-- Maintained potential predecessor and successor while searching for the key.
-- If the key existed:
-  - Found predecessor as the maximum node in the left subtree.
-  - Found successor as the minimum node in the right subtree.
-- Returned both nodes after traversal.
+- Traversed left whenever the current value was greater than the target while storing it as a potential answer.
+- Traversed right when the current value was smaller.
+- Returned immediately if an exact match was found.
 
 ### Complexity
 
@@ -104,38 +54,87 @@ Traversed the BST iteratively.
 
 ### Key Learning
 
-BST ordering allows predecessor and successor to be determined efficiently during a single search.
+Maintaining the current best candidate while traversing eliminates unnecessary exploration.
+
+---
+
+### 3. Kth Smallest Element in a BST
+
+**Platform:** LeetCode
+
+**Difficulty:** Medium
+
+### Approach
+
+Performed an inorder traversal.
+
+- Visited nodes in sorted order.
+- Maintained a counter.
+- Returned the node value when the counter reached **k**.
+
+### Complexity
+
+- Time Complexity: O(H + K)
+- Space Complexity: O(H)
+
+### Key Learning
+
+Inorder traversal of a BST always produces values in ascending order.
+
+---
+
+### 4. Kth Largest Element in a BST
+
+**Platform:** GeeksforGeeks
+
+**Difficulty:** Medium
+
+### Approach
+
+Performed a reverse inorder traversal.
+
+- Visited the right subtree first.
+- Counted visited nodes.
+- Returned the value when the kth node was encountered.
+
+### Complexity
+
+- Time Complexity: O(H + K)
+- Space Complexity: O(H)
+
+### Key Learning
+
+Reverse inorder traversal visits BST nodes in descending order.
 
 ---
 
 ## Concepts Practiced
 
 - Binary Search Trees
-- BST Construction
-- BST Validation
-- Lowest Common Ancestor
-- Predecessor and Successor
-- Recursion
-- Divide and Conquer
+- Floor in BST
+- Ceil in BST
+- Inorder Traversal
+- Reverse Inorder Traversal
+- BST Search
 - Tree Traversal
+- Recursion
 
 ---
 
 ## Day Summary
 
-Today's problems focused on advanced Binary Search Tree operations.
+Today's problems focused on leveraging Binary Search Tree properties for efficient searching and ordered traversal.
 
-- Constructed a BST directly from preorder traversal in linear time.
-- Validated BST properties using recursive value constraints.
-- Found the Lowest Common Ancestor by leveraging BST ordering.
-- Computed predecessor and successor efficiently using iterative traversal.
+- Found the floor and ceil of a given key using BST ordering.
+- Retrieved the kth smallest element using inorder traversal.
+- Retrieved the kth largest element using reverse inorder traversal.
 
-These problems strengthened my understanding of BST invariants and how tree ordering simplifies many common operations.
+These problems strengthened my understanding of ordered traversals and search-based operations in Binary Search Trees.
 
 ---
 
 ## Statistics
 
 - Problems Solved Today: 4
-- Total Problems Solved So Far: 136
-- Days Completed: 42/45
+- Total Problems Solved So Far: 140
+- Days Completed: 43/45

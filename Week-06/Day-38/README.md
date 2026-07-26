@@ -1,10 +1,36 @@
-# Day 38
+# Day 39
 
-📅 Date: 08 July 2026
+📅 Date: 09 July 2026
 
 ## Problems Solved
 
-### 1. Lowest Common Ancestor of a Binary Tree
+### 1. Binary Tree Maximum Path Sum
+
+**Platform:** LeetCode
+
+**Difficulty:** Hard
+
+### Approach
+
+Used postorder DFS to compute the maximum gain from each subtree.
+
+- Ignored negative subtree contributions by taking `max(0, gain)`.
+- Calculated the path passing through the current node.
+- Updated the global maximum path sum.
+- Returned the maximum gain that could be extended to the parent.
+
+### Complexity
+
+- Time Complexity: O(N)
+- Space Complexity: O(H)
+
+### Key Learning
+
+For path sum problems, each recursive call should return the maximum contribution to its parent while separately maintaining the best complete path.
+
+---
+
+### 2. Construct Binary Tree from Preorder and Inorder Traversal
 
 **Platform:** LeetCode
 
@@ -12,50 +38,25 @@
 
 ### Approach
 
-Used recursive DFS.
+Reconstructed the tree recursively.
 
-- Returned the current node if it matched either target node.
-- Recursively searched both left and right subtrees.
-- If both recursive calls returned non-null, the current node was the Lowest Common Ancestor.
-- Otherwise, propagated the non-null child upward.
-
-### Complexity
-
-- Time Complexity: O(N)
-- Space Complexity: O(H)
-
-### Key Learning
-
-The recursive return values naturally identify the Lowest Common Ancestor without storing parent pointers.
-
----
-
-### 2. Same Tree
-
-**Platform:** LeetCode
-
-**Difficulty:** Easy
-
-### Approach
-
-Compared both trees recursively.
-
-- If both nodes were null, returned true.
-- If one node was null or values differed, returned false.
-- Recursively compared left and right subtrees.
+- Used preorder traversal to identify the root.
+- Stored inorder indices in a HashMap for constant-time lookup.
+- Divided the inorder array into left and right subtrees.
+- Built both subtrees recursively.
 
 ### Complexity
 
 - Time Complexity: O(N)
-- Space Complexity: O(H)
+- Space Complexity: O(N)
 
 ### Key Learning
 
-Tree equality can be verified through synchronized recursive traversal.
+Combining preorder traversal with inorder indexing enables reconstruction of the original binary tree in linear time.
 
 ---
 
-### 3. Binary Tree Zigzag Level Order Traversal
+### 3. Construct Binary Tree from Inorder and Postorder Traversal
 
 **Platform:** LeetCode
 
@@ -63,46 +64,23 @@ Tree equality can be verified through synchronized recursive traversal.
 
 ### Approach
 
-Used DFS with level tracking.
+Built the tree recursively starting from the end of the postorder array.
 
-- Created a new list whenever a new level was reached.
-- Inserted nodes at the end for even levels.
-- Inserted nodes at the beginning for odd levels.
-- Traversed recursively while maintaining the current level.
+- Selected the current root from postorder.
+- Located the root in the inorder traversal.
+- Constructed the right subtree before the left subtree.
+- Repeated recursively until the tree was reconstructed.
 
 ### Complexity
 
-- Time Complexity: O(N)
+- Time Complexity: O(N²) *(Current implementation due to linear inorder search)*
 - Space Complexity: O(H)
 
 ### Key Learning
 
-Traversal order can be controlled by changing the insertion position without reversing entire levels.
+When reconstructing from inorder and postorder traversals, the right subtree must be built before the left because postorder is processed from the end.
 
----
-
-### 4. Boundary Traversal of Binary Tree
-
-**Platform:** GeeksforGeeks
-
-**Difficulty:** Medium
-
-### Approach
-
-Traversed the tree in three phases.
-
-- Added the left boundary excluding leaf nodes.
-- Collected all leaf nodes using DFS.
-- Added the right boundary in reverse order while excluding leaves.
-
-### Complexity
-
-- Time Complexity: O(N)
-- Space Complexity: O(H)
-
-### Key Learning
-
-Breaking the boundary into left boundary, leaves, and right boundary simplifies the implementation while avoiding duplicate nodes.
+> **Note:** This implementation can be optimized to **O(N)** by storing inorder indices in a HashMap.
 
 ---
 
@@ -110,30 +88,29 @@ Breaking the boundary into left boundary, leaves, and right boundary simplifies 
 
 - Binary Trees
 - DFS
-- Tree Traversal
-- Lowest Common Ancestor
-- Tree Comparison
-- Zigzag Traversal
-- Boundary Traversal
-- Recursion
+- Postorder Traversal
+- Tree Reconstruction
+- Divide and Conquer
+- HashMap
+- Recursive Tree Construction
+- Maximum Path Sum
 
 ---
 
 ## Day Summary
 
-Today's problems focused on recursive binary tree algorithms and specialized traversal patterns.
+Today's problems focused on advanced binary tree recursion and reconstruction techniques.
 
-- Solved Lowest Common Ancestor using recursive DFS.
-- Compared two binary trees through synchronized recursion.
-- Implemented zigzag traversal using DFS with level-aware insertion.
-- Performed boundary traversal by combining left boundary, leaf nodes, and right boundary traversals.
+- Computed the maximum path sum using postorder DFS and subtree gains.
+- Reconstructed binary trees from preorder-inorder and inorder-postorder traversals.
+- Practiced divide-and-conquer strategies for recursive tree construction.
 
-These problems strengthened my understanding of recursive tree algorithms and traversal techniques commonly used in technical interviews.
+These problems strengthened my understanding of recursive tree algorithms, traversal relationships, and efficient tree reconstruction techniques.
 
 ---
 
 ## Statistics
 
-- Problems Solved Today: 4
-- Total Problems Solved So Far: 123
-- Days Completed: 38/45
+- Problems Solved Today: 3
+- Total Problems Solved So Far: 126
+- Days Completed: 39/45

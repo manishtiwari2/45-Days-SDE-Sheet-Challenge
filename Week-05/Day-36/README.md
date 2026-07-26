@@ -1,75 +1,79 @@
-# Day 36
+# Day 37
 
-📅 Date: 06 July 2026
+📅 Date: 07 July 2026
 
 ## Problems Solved
 
-### 1. Preorder, Inorder and Postorder in One Traversal
+### 1. Binary Tree Level Order Traversal
 
-**Platform:** Coding Ninjas
+**Platform:** LeetCode
 
 **Difficulty:** Medium
 
 ### Approach
 
-Performed all three traversals using a single iterative traversal.
+Performed Breadth-First Search (BFS).
 
-- Used a stack storing each node along with its traversal state.
-- State 1 → Preorder
-- State 2 → Inorder
-- State 3 → Postorder
-- Visited every node exactly once while producing all three traversals.
+- Used a queue to process nodes level by level.
+- Stored all nodes of the current level before moving to the next.
+- Added each level to the final answer.
 
 ### Complexity
 
 - Time Complexity: O(N)
-- Space Complexity: O(N)
+- Space Complexity: O(W)
+
+Where:
+- N = Number of nodes
+- W = Maximum width of the tree
 
 ### Key Learning
 
-Using traversal states allows generating preorder, inorder, and postorder traversals in a single pass.
+Level Order Traversal is the foundation for many Binary Tree problems involving levels and views.
 
 ---
 
-### 2. Vertical Order Traversal
+### 2. Maximum Depth of Binary Tree
 
 **Platform:** LeetCode
 
-**Difficulty:** Hard
+**Difficulty:** Easy
 
 ### Approach
 
-Used BFS with coordinate tracking.
+Used recursion.
 
-- Assigned each node a row and column.
-- Stored nodes in nested TreeMaps ordered by column and row.
-- Used a PriorityQueue to resolve nodes sharing the same position.
-- Constructed the answer column by column.
+- Computed the height of the left subtree.
+- Computed the height of the right subtree.
+- Returned one plus the maximum of both heights.
 
 ### Complexity
 
-- Time Complexity: O(N log N)
-- Space Complexity: O(N)
+- Time Complexity: O(N)
+- Space Complexity: O(H)
+
+Where:
+- H = Height of the tree
 
 ### Key Learning
 
-Maintaining row, column, and value ordering is essential for correctly implementing vertical traversal.
+Tree height problems naturally map to recursive divide-and-conquer solutions.
 
 ---
 
-### 3. Root to Leaf Paths
+### 3. Diameter of Binary Tree
 
-**Platform:** GeeksforGeeks
+**Platform:** LeetCode
 
-**Difficulty:** Medium
+**Difficulty:** Easy
 
 ### Approach
 
-Applied DFS with backtracking.
+Computed height while simultaneously tracking the diameter.
 
-- Maintained the current root-to-node path.
-- Added a copy of the path when reaching a leaf node.
-- Removed the current node during backtracking.
+- Calculated the height of left and right subtrees.
+- Updated the diameter using `leftHeight + rightHeight`.
+- Returned the subtree height to the parent.
 
 ### Complexity
 
@@ -78,66 +82,64 @@ Applied DFS with backtracking.
 
 ### Key Learning
 
-Backtracking enables efficient generation of all root-to-leaf paths without unnecessary copying.
+Multiple tree properties can often be computed together during a single DFS traversal.
 
 ---
 
-### 4. Maximum Width of Binary Tree
+### 4. Balanced Binary Tree
 
 **Platform:** LeetCode
 
-**Difficulty:** Medium
+**Difficulty:** Easy
 
 ### Approach
 
-Performed level order traversal using indexed nodes.
+Used postorder DFS.
 
-- Assigned virtual indices similar to a complete binary tree.
-- Normalized indices at each level to avoid overflow.
-- Calculated width as the difference between the first and last index at every level.
+- Computed subtree heights recursively.
+- Returned `-1` immediately if any subtree became unbalanced.
+- Checked the height difference at every node.
 
 ### Complexity
 
 - Time Complexity: O(N)
-- Space Complexity: O(N)
+- Space Complexity: O(H)
 
 ### Key Learning
 
-Virtual indexing provides an elegant way to compute the maximum width even when the tree contains missing nodes.
+Returning sentinel values allows early termination and avoids unnecessary traversals.
 
 ---
 
 ## Concepts Practiced
 
 - Binary Trees
-- DFS
-- BFS
-- Stack
-- Queue
-- Backtracking
-- Vertical Traversal
+- Breadth-First Search (BFS)
+- Depth-First Search (DFS)
 - Level Order Traversal
-- Coordinate Mapping
-- TreeMap
-- Priority Queue
+- Tree Height
+- Diameter of Binary Tree
+- Balanced Trees
+- Recursion
+- Divide and Conquer
 
 ---
 
 ## Day Summary
 
-Today's problems focused on advanced binary tree traversal techniques and tree views.
+Today's problems focused on fundamental binary tree properties and traversals.
 
-- Generated preorder, inorder, and postorder traversals in a single iterative pass.
-- Solved vertical traversal using BFS with coordinate mapping.
-- Generated all root-to-leaf paths using DFS and backtracking.
-- Computed the maximum width of a binary tree using indexed level order traversal.
+- Implemented level order traversal using BFS.
+- Calculated the maximum depth through recursive height computation.
+- Solved the diameter problem by combining height calculation with DFS.
+- Verified tree balance efficiently using postorder traversal and early termination.
 
-These problems strengthened my understanding of traversal optimization, coordinate-based tree algorithms, and BFS/DFS applications in binary trees.
+These problems strengthened my understanding of recursive tree algorithms and how multiple tree properties can be computed efficiently in a single traversal.
 
 ---
 
 ## Statistics
 
 - Problems Solved Today: 4
-- Total Problems Solved So Far: 115
-- Days Completed: 36/45
+- Total Problems Solved So Far: 119
+- Days Completed: 37/45

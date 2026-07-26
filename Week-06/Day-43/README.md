@@ -1,64 +1,61 @@
 # Day 43
 
-📅 Date: 13 July 2026
+📅 Date: 14 July 2026
 
 ## Problems Solved
 
-### 1. Floor in BST
+### 1. Two Sum IV - Input is a BST
 
-**Platform:** GeeksforGeeks
+**Platform:** LeetCode
 
 **Difficulty:** Easy
 
 ### Approach
 
-Used the Binary Search Tree property recursively.
+Used inorder traversal followed by the two-pointer technique.
 
-- If the current node's value equals the key, it is the floor.
-- If the current value is greater than the key, searched the left subtree.
-- Otherwise, searched the right subtree for a better candidate.
-- Returned the current node if no larger floor existed in the right subtree.
+- Performed inorder traversal to obtain the BST elements in sorted order.
+- Applied two pointers from both ends of the sorted list.
+- Compared the current sum with the target and adjusted pointers accordingly.
 
 ### Complexity
 
-- Time Complexity: O(H)
+- Time Complexity: O(N)
+- Space Complexity: O(N)
+
+### Key Learning
+
+Inorder traversal converts a BST into a sorted array, allowing classic two-pointer techniques to be applied efficiently.
+
+---
+
+### 2. Maximum Sum BST in Binary Tree
+
+**Platform:** LeetCode
+
+**Difficulty:** Hard
+
+### Approach
+
+Traversed every subtree.
+
+- Checked whether each subtree satisfied BST properties.
+- Calculated the sum of nodes if the subtree was a BST.
+- Updated the maximum BST sum encountered.
+- Continued recursively for all subtrees.
+
+### Complexity
+
+- Time Complexity: O(N²) *(Current implementation)*
 - Space Complexity: O(H)
 
-Where:
-- H = Height of the BST
-
 ### Key Learning
 
-The floor is the greatest value less than or equal to the target, making BST traversal highly efficient.
+A brute-force recursive solution repeatedly validates BST properties and subtree sums. This problem can be optimized to **O(N)** using postorder traversal that simultaneously computes validity, minimum, maximum, and subtree sum.
 
 ---
 
-### 2. Ceil in BST
-
-**Platform:** GeeksforGeeks
-
-**Difficulty:** Easy
-
-### Approach
-
-Used an iterative BST traversal.
-
-- Traversed left whenever the current value was greater than the target while storing it as a potential answer.
-- Traversed right when the current value was smaller.
-- Returned immediately if an exact match was found.
-
-### Complexity
-
-- Time Complexity: O(H)
-- Space Complexity: O(1)
-
-### Key Learning
-
-Maintaining the current best candidate while traversing eliminates unnecessary exploration.
-
----
-
-### 3. Kth Smallest Element in a BST
+### 3. Binary Search Tree Iterator
 
 **Platform:** LeetCode
 
@@ -66,70 +63,75 @@ Maintaining the current best candidate while traversing eliminates unnecessary e
 
 ### Approach
 
-Performed an inorder traversal.
+Implemented an iterator using a stack.
 
-- Visited nodes in sorted order.
-- Maintained a counter.
-- Returned the node value when the counter reached **k**.
+- Stored the leftmost path initially.
+- Returned the next smallest element by popping the stack.
+- Processed the right subtree by pushing its leftmost path.
 
 ### Complexity
 
-- Time Complexity: O(H + K)
+- Time Complexity:
+  - `next()` → O(1) amortized
+  - `hasNext()` → O(1)
 - Space Complexity: O(H)
 
 ### Key Learning
 
-Inorder traversal of a BST always produces values in ascending order.
+Maintaining the leftmost path in a stack efficiently simulates inorder traversal while supporting iterator operations.
 
 ---
 
-### 4. Kth Largest Element in a BST
+### 4. Serialize and Deserialize Binary Tree
 
-**Platform:** GeeksforGeeks
+**Platform:** LeetCode
 
-**Difficulty:** Medium
+**Difficulty:** Hard
 
 ### Approach
 
-Performed a reverse inorder traversal.
+Used level-order traversal.
 
-- Visited the right subtree first.
-- Counted visited nodes.
-- Returned the value when the kth node was encountered.
+- Serialized the tree using BFS.
+- Represented null nodes with `#`.
+- During deserialization, rebuilt the tree level by level using a queue.
 
 ### Complexity
 
-- Time Complexity: O(H + K)
-- Space Complexity: O(H)
+- Time Complexity: O(N)
+- Space Complexity: O(N)
 
 ### Key Learning
 
-Reverse inorder traversal visits BST nodes in descending order.
+Including null markers preserves the exact tree structure, enabling accurate reconstruction.
 
 ---
 
 ## Concepts Practiced
 
 - Binary Search Trees
-- Floor in BST
-- Ceil in BST
 - Inorder Traversal
-- Reverse Inorder Traversal
-- BST Search
-- Tree Traversal
-- Recursion
+- Two Pointers
+- BST Iterator
+- Queue
+- Stack
+- Tree Serialization
+- Tree Deserialization
+- BFS
+- DFS
 
 ---
 
 ## Day Summary
 
-Today's problems focused on leveraging Binary Search Tree properties for efficient searching and ordered traversal.
+Today's problems combined Binary Search Tree operations with advanced tree design concepts.
 
-- Found the floor and ceil of a given key using BST ordering.
-- Retrieved the kth smallest element using inorder traversal.
-- Retrieved the kth largest element using reverse inorder traversal.
+- Solved the Two Sum problem in a BST using inorder traversal and two pointers.
+- Explored finding the maximum-sum BST inside a binary tree.
+- Implemented a BST iterator with amortized constant-time operations.
+- Serialized and deserialized binary trees using level-order traversal.
 
-These problems strengthened my understanding of ordered traversals and search-based operations in Binary Search Trees.
+These problems strengthened my understanding of BST traversal, iterator design, tree encoding, and advanced recursive algorithms.
 
 ---
 

@@ -138,5 +138,5 @@ These problems strengthened my understanding of BST traversal, iterator design, 
 ## Statistics
 
 - Problems Solved Today: 4
-- Total Problems Solved So Far: 144
+- Total Problems Solved So Far: 140
 - Days Completed: 43/45

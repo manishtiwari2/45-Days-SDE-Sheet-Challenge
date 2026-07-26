@@ -1,10 +1,10 @@
-# Day 41
+# Day 42
 
-📅 Date: 11 July 2026
+📅 Date: 12 July 2026
 
 ## Problems Solved
 
-### 1. Populating Next Right Pointers in Each Node
+### 1. Construct Binary Search Tree from Preorder Traversal
 
 **Platform:** LeetCode
 
@@ -12,37 +12,13 @@
 
 ### Approach
 
-Used recursive DFS on a perfect binary tree.
+Constructed the BST recursively using an upper bound.
 
-- Connected the left child to the right child.
-- Connected the right child to the left child of the adjacent node using the parent's `next` pointer.
-- Recursively processed the left and right subtrees.
-
-### Complexity
-
-- Time Complexity: O(N)
-- Space Complexity: O(H)
-
-### Key Learning
-
-The `next` pointers established at one level can be leveraged to connect nodes across different subtrees without additional data structures.
-
----
-
-### 2. Convert Sorted Array to Binary Search Tree
-
-**Platform:** LeetCode
-
-**Difficulty:** Easy
-
-### Approach
-
-Constructed the BST using divide and conquer.
-
-- Selected the middle element as the root.
-- Recursively built the left subtree from the left half.
-- Recursively built the right subtree from the right half.
-- Ensured the resulting BST remained height-balanced.
+- Traversed the preorder array once.
+- Maintained a global index.
+- Created nodes while the current value remained within the allowed bound.
+- Recursively built the left subtree with the current node's value as the new bound.
+- Built the right subtree using the inherited bound.
 
 ### Complexity
 
@@ -51,66 +27,115 @@ Constructed the BST using divide and conquer.
 
 ### Key Learning
 
-Choosing the middle element recursively guarantees a balanced Binary Search Tree.
+Using value bounds eliminates the need to search for subtree boundaries, allowing linear-time BST construction.
 
 ---
 
-### 3. Search in a Binary Search Tree
+### 2. Validate Binary Search Tree
 
 **Platform:** LeetCode
 
-**Difficulty:** Easy
+**Difficulty:** Medium
 
 ### Approach
 
-Performed iterative BST search.
+Validated the BST using recursion with value ranges.
 
-- Compared the target value with the current node.
-- Moved left if the target was smaller.
-- Moved right if the target was larger.
-- Returned the node once the value was found.
+- Maintained lower and upper bounds for every node.
+- Ensured each node's value lay strictly within its valid range.
+- Updated bounds recursively for left and right subtrees.
+
+### Complexity
+
+- Time Complexity: O(N)
+- Space Complexity: O(H)
+
+### Key Learning
+
+Every node must satisfy constraints imposed by all its ancestors, not just its immediate parent.
+
+---
+
+### 3. Lowest Common Ancestor of a Binary Search Tree
+
+**Platform:** LeetCode
+
+**Difficulty:** Medium
+
+### Approach
+
+Leveraged the BST property.
+
+- Traversed left if both target nodes were smaller.
+- Traversed right if both target nodes were larger.
+- Returned the current node when the targets diverged.
+
+### Complexity
+
+- Time Complexity: O(H)
+- Space Complexity: O(H)
+
+### Key Learning
+
+BST ordering enables efficient Lowest Common Ancestor computation without exploring both subtrees.
+
+---
+
+### 4. Predecessor and Successor
+
+**Platform:** GeeksforGeeks
+
+**Difficulty:** Medium
+
+### Approach
+
+Traversed the BST iteratively.
+
+- Maintained potential predecessor and successor while searching for the key.
+- If the key existed:
+  - Found predecessor as the maximum node in the left subtree.
+  - Found successor as the minimum node in the right subtree.
+- Returned both nodes after traversal.
 
 ### Complexity
 
 - Time Complexity: O(H)
 - Space Complexity: O(1)
 
-Where:
-- H = Height of the Binary Search Tree.
-
 ### Key Learning
 
-The BST ordering property enables efficient searching without traversing the entire tree.
+BST ordering allows predecessor and successor to be determined efficiently during a single search.
 
 ---
 
 ## Concepts Practiced
 
-- Binary Trees
 - Binary Search Trees
-- DFS
-- Divide and Conquer
-- Tree Construction
-- BST Search
-- Next Pointer Connections
+- BST Construction
+- BST Validation
+- Lowest Common Ancestor
+- Predecessor and Successor
 - Recursion
+- Divide and Conquer
+- Tree Traversal
 
 ---
 
 ## Day Summary
 
-Today's problems marked the transition from Binary Trees to Binary Search Trees.
+Today's problems focused on advanced Binary Search Tree operations.
 
-- Connected adjacent nodes in a perfect binary tree using existing `next` pointers.
-- Constructed a height-balanced BST from a sorted array.
-- Implemented efficient iterative search in a Binary Search Tree.
+- Constructed a BST directly from preorder traversal in linear time.
+- Validated BST properties using recursive value constraints.
+- Found the Lowest Common Ancestor by leveraging BST ordering.
+- Computed predecessor and successor efficiently using iterative traversal.
 
-These problems strengthened my understanding of BST properties, recursive tree construction, and pointer-based tree traversal techniques.
+These problems strengthened my understanding of BST invariants and how tree ordering simplifies many common operations.
 
 ---
 
 ## Statistics
 
-- Problems Solved Today: 3
-- Total Problems Solved So Far: 132
-- Days Completed: 41/45
+- Problems Solved Today: 4
+- Total Problems Solved So Far: 136
+- Days Completed: 42/45

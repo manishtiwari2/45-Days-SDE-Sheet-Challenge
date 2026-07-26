@@ -1,123 +1,50 @@
-# Day 35
+# Day 36
 
-📅 Date: 05 July 2026
+📅 Date: 06 July 2026
 
 ## Problems Solved
 
-### 1. Morris Preorder Traversal
+### 1. Preorder, Inorder and Postorder in One Traversal
 
-**Platform:** GeeksforGeeks
+**Platform:** Coding Ninjas
 
 **Difficulty:** Medium
 
 ### Approach
 
-Implemented Morris Preorder Traversal to traverse the tree without recursion or an explicit stack.
+Performed all three traversals using a single iterative traversal.
 
-- Visited the current node before traversing the left subtree.
-- Created temporary threads to the inorder predecessor.
-- Removed threads after revisiting the node to restore the original tree.
-
-### Complexity
-
-- Time Complexity: O(N)
-- Space Complexity: O(1)
-
-### Key Learning
-
-Morris Traversal enables preorder traversal in constant auxiliary space by temporarily modifying tree links.
-
----
-
-### 2. Left View of Binary Tree
-
-**Platform:** GeeksforGeeks
-
-**Difficulty:** Easy
-
-### Approach
-
-Used DFS with level tracking.
-
-- Traversed the left subtree before the right subtree.
-- Added the first node encountered at every depth to the answer.
+- Used a stack storing each node along with its traversal state.
+- State 1 → Preorder
+- State 2 → Inorder
+- State 3 → Postorder
+- Visited every node exactly once while producing all three traversals.
 
 ### Complexity
 
 - Time Complexity: O(N)
-- Space Complexity: O(H)
+- Space Complexity: O(N)
 
 ### Key Learning
 
-Depth-first traversal combined with level information can efficiently generate the left view.
+Using traversal states allows generating preorder, inorder, and postorder traversals in a single pass.
 
 ---
 
-### 3. Binary Tree Right Side View
+### 2. Vertical Order Traversal
 
 **Platform:** LeetCode
 
-**Difficulty:** Medium
+**Difficulty:** Hard
 
 ### Approach
 
-Performed level order traversal using BFS.
+Used BFS with coordinate tracking.
 
-- Processed nodes level by level.
-- Stored the last node encountered at each level.
-
-### Complexity
-
-- Time Complexity: O(N)
-- Space Complexity: O(W)
-
-Where:
-- W = Maximum width of the tree.
-
-### Key Learning
-
-Level order traversal naturally identifies visible nodes from the right side.
-
----
-
-### 4. Find Bottom Left Tree Value
-
-**Platform:** LeetCode
-
-**Difficulty:** Medium
-
-### Approach
-
-Applied level order traversal.
-
-- Traversed the tree level by level.
-- Recorded the first node at every level.
-- The first node of the last level became the answer.
-
-### Complexity
-
-- Time Complexity: O(N)
-- Space Complexity: O(W)
-
-### Key Learning
-
-The first node encountered at the deepest level represents the bottom-left value.
-
----
-
-### 5. Top View of Binary Tree
-
-**Platform:** GeeksforGeeks
-
-**Difficulty:** Medium
-
-### Approach
-
-Used BFS with Horizontal Distance (HD).
-
-- Assigned each node a horizontal distance.
-- Stored only the first node encountered for every horizontal distance.
-- Used a TreeMap to maintain left-to-right ordering.
+- Assigned each node a row and column.
+- Stored nodes in nested TreeMaps ordered by column and row.
+- Used a PriorityQueue to resolve nodes sharing the same position.
+- Constructed the answer column by column.
 
 ### Complexity
 
@@ -126,39 +53,91 @@ Used BFS with Horizontal Distance (HD).
 
 ### Key Learning
 
-Horizontal distance combined with level order traversal is the standard approach for top view problems.
+Maintaining row, column, and value ordering is essential for correctly implementing vertical traversal.
+
+---
+
+### 3. Root to Leaf Paths
+
+**Platform:** GeeksforGeeks
+
+**Difficulty:** Medium
+
+### Approach
+
+Applied DFS with backtracking.
+
+- Maintained the current root-to-node path.
+- Added a copy of the path when reaching a leaf node.
+- Removed the current node during backtracking.
+
+### Complexity
+
+- Time Complexity: O(N)
+- Space Complexity: O(H)
+
+### Key Learning
+
+Backtracking enables efficient generation of all root-to-leaf paths without unnecessary copying.
+
+---
+
+### 4. Maximum Width of Binary Tree
+
+**Platform:** LeetCode
+
+**Difficulty:** Medium
+
+### Approach
+
+Performed level order traversal using indexed nodes.
+
+- Assigned virtual indices similar to a complete binary tree.
+- Normalized indices at each level to avoid overflow.
+- Calculated width as the difference between the first and last index at every level.
+
+### Complexity
+
+- Time Complexity: O(N)
+- Space Complexity: O(N)
+
+### Key Learning
+
+Virtual indexing provides an elegant way to compute the maximum width even when the tree contains missing nodes.
 
 ---
 
 ## Concepts Practiced
 
 - Binary Trees
-- Morris Traversal
 - DFS
 - BFS
-- Level Order Traversal
-- Tree Views
-- Horizontal Distance
-- TreeMap
+- Stack
 - Queue
+- Backtracking
+- Vertical Traversal
+- Level Order Traversal
+- Coordinate Mapping
+- TreeMap
+- Priority Queue
 
 ---
 
 ## Day Summary
 
-Today's problems focused on different ways of viewing and traversing binary trees.
+Today's problems focused on advanced binary tree traversal techniques and tree views.
 
-- Implemented Morris Preorder Traversal for O(1) space traversal.
-- Solved left and right view problems using DFS and BFS.
-- Identified the bottom-left node through level order traversal.
-- Learned the horizontal distance technique for computing the top view.
+- Generated preorder, inorder, and postorder traversals in a single iterative pass.
+- Solved vertical traversal using BFS with coordinate mapping.
+- Generated all root-to-leaf paths using DFS and backtracking.
+- Computed the maximum width of a binary tree using indexed level order traversal.
 
-These problems strengthened my understanding of traversal strategies and view-based binary tree algorithms.
+These problems strengthened my understanding of traversal optimization, coordinate-based tree algorithms, and BFS/DFS applications in binary trees.
 
 ---
 
 ## Statistics
 
-- Problems Solved Today: 5
-- Total Problems Solved So Far: 111
-- Days Completed: 35/45
+- Problems Solved Today: 4
+- Total Problems Solved So Far: 115
+- Days Completed: 36/45
